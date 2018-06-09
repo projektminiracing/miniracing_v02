@@ -48,4 +48,5 @@ export class RacePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RacePage');
   }
+
 }
