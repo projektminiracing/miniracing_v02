@@ -35,13 +35,46 @@ export class RaceServiceProvider {
     })
   }
 
-  getDriver(driver_id : string){
+  getDriver(user_id : string){
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/driver/'+driver_id).subscribe(data => {
+      this.http.get(this.apiUrl + '/driver/user_id/'+user_id).subscribe(data => {
         resolve(data);
       }), err => {
         console.log(err);
       }
     })
   }
+
+  getVehicle(user_id : string){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/vehicle/user_id/'+user_id).subscribe(data => {
+        resolve(data);
+      }), err => {
+        console.log(err);
+      }
+    })
+  }
+
+  upgradeDriver(driver : any){
+    return new Promise(resolve=>{
+      this.http.post(this.apiUrl+"/driver/upgrade", driver).subscribe(data =>{
+        console.log(data);
+        resolve(data);
+      }), error => {
+        console.log(error);
+      }
+    })
+  }
+
+  upgradeVehicle(vehicle : any){
+    return new Promise(resolve=>{
+      this.http.post(this.apiUrl+"/vehicle/upgrade", vehicle).subscribe(data =>{
+        console.log(data);
+        resolve(data);
+      }), error => {
+        console.log(error);
+      }
+    })
+  }
+
 }
